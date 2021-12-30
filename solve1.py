@@ -86,7 +86,14 @@ n2 = 600851475143
 
 out_3 = Largest_Prime_Factor(n2)
 
-print("Largest prime factor: ", out_3) 
+print("Largest prime factor: ", out_3)
+
+
+
+
+
+
+
 
 
 
