@@ -34,5 +34,53 @@ out1 = solve_problem1(arr2, separator2)
 print("solve problem 1: ", out1)
 
 
+'''
+Given in an alumni interview in 2021.
+  String Encode
+  You are given a string that may contain sequences of consecutive characters.
+  Create a function to shorten a string by including the character,
+  then the number of times it appears. 
+  
+  
+  If final result is not shorter (such as "bb" => "b2" ),
+  return the original string.
+'''
+
+
+def solve_problem2(str1):
+    index = 0
+    ans = "" 
+    size = len(str1)
+    if size <= 2:
+        return str1
+    while index != size:
+        count = 1
+        while (index < size - 1) and (str1[index] == str1[index + 1]):
+            count += 1
+            index += 1
+        if count == 1:
+            ans += str(str1[index]) 
+        elif count > 1:
+            ans += str(str1[index]) + str(count)
+        index += 1
+
+    return ans 
+                                    
+        
+
+str1 = "aaaabbcddd";
+expected1 = "a4b2c1d3";
+
+out2 = solve_problem2(str1)
+
+print("problem 2: ", out2) 
+
+
+
+
+
+
+
+
 
 
