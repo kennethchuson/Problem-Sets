@@ -73,7 +73,38 @@ expected1 = "a4b2c1d3";
 
 out2 = solve_problem2(str1)
 
-print("problem 2: ", out2) 
+print("problem 2: ", out2)
+
+
+'''
+  Create a function that returns a boolean whether the string is a strict palindrome. 
+    - palindrome = string that is same forwards and backwards
+'''
+
+
+def solve_problem3(str1):
+    return str1 == str1[::-1] 
+    
+
+
+str2 = "racecar";
+expected2 = True;
+  
+str3 = "Dud";
+expected3 = False;
+  
+str4 = "oho!";
+expected4 = False;
+
+out3 = solve_problem3(str2)
+
+print("problem 3: ", out3) 
+
+
+
+
+
+
 
 
 
