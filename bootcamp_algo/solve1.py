@@ -63,6 +63,46 @@ out2 = solve_problem2(str3)
 print("solve problem 2: ", out2)
 
 
+'''
+Check if the letter in a string is unique
+'''
+
+
+
+
+def solve_problem3(a, size):
+
+    isUnique = False
+    
+    if size <= 1:
+        return a
+
+    
+    dicto = {} 
+    for i in range(size):
+        if a[i] not in dicto:
+            dicto[a[i]] = 1
+        else:
+            dicto[a[i]] += 1
+
+    for (key, val) in dicto.items():
+        if val == 1:
+            isUnique = True
+
+    return isUnique 
+              
+
+
+
+s = "aaabbbccd"
+
+out = solve_problem3(s, len(s))
+
+
+print("Unique existence: ", out) 
+
+
+
 
 
 
