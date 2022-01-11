@@ -23,45 +23,80 @@ class Target(object):
 
 
 class JumpingGame(object):
-    def __init_(self, player, health, grid_x, grid_y):
-        self.player = player
+
+
+    
+    def __init__(self, player_one, player_two, health, grid_x, grid_y):
+        self.player_one = player_one
+        self.player_two = player_two 
         self.health = health
         self.grid_x = grid_x
         self.grid_y = grid_y
-
-    def Menu(self, choose):
-        if choose == 1:
-            self.startGame() 
-        elif choose == 2:
-            self.endGame() 
-        else:
-            raise Exception("No options!")
+        self.mat1 = []
+        self.mat2 = [] 
         
-    def startGame(self):
-        self.displayGame() 
+        
+    def startGame(self, x, y):
+        matching = 0
+        self.displayGame()
+        t = Target(pow(x, 2), pow(y, 2)) 
+        
+        endGame = False
+
+        if t.if_collapse():
+            endGame = True
+        
+    
+        for i in range(0, (x + y)):
+            self.mat1[i] = t.getX() + 1
+            self.mat2[i] = t.getX() - 1
+            if self.mat1[i] == self.mat2[i]:
+                matching += 1
+            else:
+                matching -= 1
+                
+        if matching == 0:
+            endGame = True
+        
+
+        return endGame
+                
+        
         
 
     def displayGame(self):
-        mat1 = []
-        mat2 = [] 
+    
         for i in range(0, self.grid_x):
             for j in range(0, self.grid_y):
-                mat1.append([i, j])
-            mat2.append(mat1)
-        print(mat2)
+                self.mat1.append(i * j)
+            self.mat2.append(self.mat1)
+
+        print(self.mat2) 
+    
 
 
 grid_input_one = int(input("x coordinate: "))
 grid_input_two = int(input("y coordinate: "))
 
-t_input_one_x = int(input("target 1: "))
-t_input_two_y = int(input("target 2: "))
 
 
-game_player_one = JumpingGame('X', 100, grid_input_one, grid_input_two)
-game_player_two = JumpingGame('Y', 100, grid_input_one, grid_input_two)
 
-game_player_one.displayGame()
+game = JumpingGame('X','Y', 100, grid_input_one, grid_input_two)
 
+
+
+while True:
+    game.displayGame()
+    player_one = int(input("X Attack: "))
+    player_two = int(input("Y Attack: "))
+    if player_one <= 0:
+        print("try again, should be positive number attack for X") 
+        continue
+    if player_two <= 0:
+        print("try again, should be positive number attack for Y") 
+        continue 
+    if (game.startGame(player_one, player_two)):
+        print("Game Over") 
+        break 
 
         
